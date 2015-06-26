@@ -6,7 +6,11 @@
     <string name="throwR">Throw</string>
     <string name="score">Score</string>
     <string name="title_activity_end_game">EndGame</string>
-    <string name="Try">New game</string>
+    <string name="newGame">Start new game</string>
+    <string name="numText">Number of rounds</string>
+    <string name="pointText">Total number of points</string>
+
+
 
 
     <string name="hello_world">Hello world!</string>

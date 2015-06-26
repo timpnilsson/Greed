@@ -5,22 +5,51 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 
 public class EndGameActivity extends ActionBarActivity {
+    private TextView t1,t2;
+    private Button b1;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent = getIntent();
-        String value = intent.getStringExtra("key");
-        TextView v = new TextView(this);
-        v.setTextSize(40);
-        v.setText(value);
-        setContentView(v);
+        setContentView(R.layout.activity_end_game2);
+        t1 =(TextView) findViewById(R.id.nbrOfRounds);
+        t2=(TextView) findViewById(R.id.totScore);
+        b1=(Button) findViewById(R.id.newGame);
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(EndGameActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        Intent i = getIntent();
+
+        StringBuilder sb = new StringBuilder();
+        String tP = i.getStringExtra("total points");
+        sb.append(tP);
+
+        StringBuilder sn = new StringBuilder();
+        String no = i.getStringExtra("number of rounds");
+        sn.append(no);
+
+        String nR = i.getStringExtra("number of rounds");
+        t1.setText(sb.toString());
+        t2.setText(sn.toString());
+
+
 
 
     }
+
+
+
 
 
     @Override

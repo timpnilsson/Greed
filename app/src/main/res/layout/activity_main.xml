@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/black"
+    android:background="@color/grey"
     >
 <GridView
     android:id="@+id/gridview"
@@ -17,4 +17,22 @@
     android:gravity="center">
 
 </GridView>
+<TextView
+    android:id="@+id/currentRound"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:layout_below="@id/gridview"/>
+<TextView
+    android:id="@+id/pointCurrRound"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:layout_below="@id/currentRound"/>
+<TextView
+    android:id="@+id/totPoints"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="#FFFFFF"
+    android:layout_below="@id/pointCurrRound"/>
 </RelativeLayout>

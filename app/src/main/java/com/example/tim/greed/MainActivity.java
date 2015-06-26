@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class MainActivity extends ActionBarActivity {
     private int nbrOfRounds;
     private int totPoints;
     private static final int endOfRound =10000;
+    private TextView t1;
 
     protected void onSaveInstanceState(Bundle outState) {
         // Save the values you need from your textview into "outState"-object
@@ -36,6 +38,8 @@ public class MainActivity extends ActionBarActivity {
             setContentView(R.layout.activity_main);
             nbrOfRounds = 0;
             totPoints = 0;
+
+
 
             final GridView gridview = (GridView) findViewById(R.id.gridview);
             gridview.setAdapter(new ImageAdapter(this));
@@ -60,7 +64,7 @@ public class MainActivity extends ActionBarActivity {
                     } else {
                         for (int j = 0; j < dices.size(); j++) {
                             Dice temp = dices.get(j);
-                            if (temp.getState() == false) {
+                            if (!temp.getState()) {
                                 temp.diceRoll();
                                 System.out.println(temp.getValue());
 
@@ -77,10 +81,16 @@ public class MainActivity extends ActionBarActivity {
                         }
                         int roundPoints = checkRound.reachedMinimun();
                         totPoints = totPoints + roundPoints;
-
+                        Toast.makeText(MainActivity.this, "" + totPoints,
+                                Toast.LENGTH_SHORT).show();
                         nbrOfRounds++;
                         if(totPoints>=10000){
+
                             Intent intent = new Intent(MainActivity.this, EndGameActivity.class);
+                            String s = Integer.toString(totPoints);
+                            String t = Integer.toString(nbrOfRounds);
+                            intent.putExtra("total points",s);
+                            intent.putExtra("number of rounds", t);
                             startActivity(intent);
                         }else {
                             System.out.println("Current number of rounds: " + nbrOfRounds);
@@ -98,8 +108,7 @@ public class MainActivity extends ActionBarActivity {
 
     public void switchPressed(int i) {
         dices.get(i).changeState();
-        Toast.makeText(MainActivity.this, "" + dices.get(i).getState(),
-                Toast.LENGTH_SHORT).show();
+
 
     }
 }
