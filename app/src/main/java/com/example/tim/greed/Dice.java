@@ -8,12 +8,12 @@ import java.util.Random;
 public class Dice {
     private int value;
     private boolean pressed;
-    private boolean used;
+    private boolean pointGiving;
 
     //creates a dice
     public Dice() {
-        pressed = false;
-        used = false;
+        pressed=false;
+        pointGiving=false;
 
     }
 
@@ -23,11 +23,7 @@ public class Dice {
         value = rand.nextInt(6 - 1) + 1;
     }
 
-    //returns the value of a dice at a specific time
-    public int getValue() {
-        return value;
 
-    }
 
     //throws the dice and returns the current value
     public int diceRoll() {
@@ -35,25 +31,42 @@ public class Dice {
         return getValue();
     }
 
-    public void changeState() {
-        if (pressed == false) {
-            pressed = true;
-        } else {
-            pressed = false;
-        }
+
+    //returns an integer, used in diceRoll()
+    public int getValue() {
+        return value;
+
     }
 
-    public boolean getState() {
-        return pressed;
+
+    //sets the value of the dice to val
+    public void setValue(int val){
+        value=val;
     }
 
-    public void changeUsed() {
-        if (used == false) {
-            used = true;
-        } else {
-            used = false;
-        }
+
+
+    //methods for checking and changing if a dice gives points
+    public boolean diceGivesPoints(){
+        return pointGiving;
     }
+    public void isPointGiving(){
+        pointGiving=true;
+    }
+    public void notPointGiving(){
+        pointGiving=false;
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

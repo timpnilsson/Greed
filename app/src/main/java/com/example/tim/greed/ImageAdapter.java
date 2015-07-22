@@ -23,6 +23,7 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     public long getItemId(int position) {
+
         return 0;
     }
 
@@ -31,10 +32,18 @@ public class ImageAdapter extends BaseAdapter {
         ImageView imageView;
         if (convertView == null) {
             // if it's not recycled, initialize some attributes
-            imageView = new ImageView(mContext);
-            imageView.setLayoutParams(new GridView.LayoutParams(200, 200));
-            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            imageView.setPadding(8, 8, 8, 8);
+            if(position<6) {
+                imageView = new ImageView(mContext);
+                imageView.setLayoutParams(new GridView.LayoutParams(200, 200));
+                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                imageView.setPadding(8, 8, 8, 8);
+            }else{
+                imageView = new ImageView(mContext);
+                imageView.setLayoutParams(new GridView.LayoutParams(300, 200));
+                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                imageView.setPadding(15, 10, 20, 10);
+
+            }
         } else {
             imageView = (ImageView) convertView;
         }
@@ -44,7 +53,7 @@ public class ImageAdapter extends BaseAdapter {
     }
 
 
-    // references to our images
+    //references to the images in R.drawable
     private Integer[] mThumbIds = {
             R.drawable.white1,
             R.drawable.white2,
@@ -52,9 +61,9 @@ public class ImageAdapter extends BaseAdapter {
             R.drawable.white4,
             R.drawable.white5,
             R.drawable.white6,
-            R.drawable.test,
-            R.drawable.test,
-            R.drawable.test
+            R.drawable.sc2,
+            R.drawable.sa2,
+            R.drawable.th2,
 
 
     };

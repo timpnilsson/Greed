@@ -1,6 +1,7 @@
 package com.example.tim.greed;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -19,6 +20,7 @@ public class EndGameActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end_game2);
+        super.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         t1 =(TextView) findViewById(R.id.nbrOfRounds);
         t2=(TextView) findViewById(R.id.totScore);
         b1=(Button) findViewById(R.id.newGame);
@@ -30,24 +32,25 @@ public class EndGameActivity extends ActionBarActivity {
             }
         });
         Intent i = getIntent();
-
-        StringBuilder sb = new StringBuilder();
-        String tP = i.getStringExtra("total points");
-        sb.append(tP);
-
-        StringBuilder sn = new StringBuilder();
-        String no = i.getStringExtra("number of rounds");
-        sn.append(no);
-
-        String nR = i.getStringExtra("number of rounds");
-        t1.setText(sb.toString());
-        t2.setText(sn.toString());
+        //Creates the string of the total points from a finished round
+        StringBuilder s1 = new StringBuilder();
+        String no = i.getStringExtra("totPoints");
+        s1.append(no);
+        //Creates the string of the total number of rounds it took to finish a round
+        StringBuilder s2 = new StringBuilder();
+        String tp = i.getStringExtra("nbrOfRounds");
+        s2.append(tp);
+        //set the two textviews to the above mentioned strings
+        t1.setText(s1.toString());
+        t2.setText(s2.toString());
 
 
 
 
     }
-
+    @Override
+    public void onBackPressed() {
+    }
 
 
 
